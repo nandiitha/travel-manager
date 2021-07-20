@@ -5,7 +5,7 @@ export default class EditPackage extends Component {
     constructor(props) {
         super(props);
 
-        this.onChangeId = this.onChangeId.bind(this);
+        this.onChangePackageId = this.onChangePackageId.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeType = this.onChangeType.bind(this);
         this.onChangePrice = this.onChangePrice.bind(this);
@@ -14,7 +14,7 @@ export default class EditPackage extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            id: 0,
+            packageId: 0,
             name: '',
             type: '',
             price: 0,
@@ -27,7 +27,7 @@ export default class EditPackage extends Component {
         axios.get('http://localhost:5000/package/' + this.props.match.params.id)
             .then(response => {
                 this.setState({
-                    id: response.data.id,
+                    packageId: response.data.packageId,
                     name: response.data.name,
                     type: response.data.type,
                     price: response.data.price,
@@ -54,9 +54,9 @@ export default class EditPackage extends Component {
 
     }
 
-    onChangeId(e) {
+    onChangePackageId(e) {
         this.setState({
-            name: e.target.value
+            packageId: e.target.value
         })
     }
 
@@ -95,7 +95,7 @@ export default class EditPackage extends Component {
         e.preventDefault();
 
         const newPackage = {
-            id: this.state.id,
+            packageId: this.state.packageId,
             name: this.state.name,
             type: this.state.type,
             price: this.state.price,
@@ -117,12 +117,12 @@ export default class EditPackage extends Component {
                 <h3>Edit Package</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Id: </label>
+                        <label>PackageId: </label>
                         <input type="text"
                             required
                             className="form-control"
-                            value={this.state.id}
-                            onChange={this.onChangeId}
+                            value={this.state.packageId}
+                            onChange={this.onChangePackageId}
                         />
                     </div>
                     <div className="form-group">

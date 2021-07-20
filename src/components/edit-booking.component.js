@@ -119,7 +119,7 @@ export default class EditBooking extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label>Date: </label>
+                        <label>Date:</label>
                         <div>
                             <DatePicker
                                 selected={this.state.date}

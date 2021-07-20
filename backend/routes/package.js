@@ -8,7 +8,7 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/').put((req, res) => {
-    const id = req.body.id;
+    const packageId = req.body.packageId;
     const name = req.body.name;
     const type = req.body.type;
     const price = Number(req.body.price);
@@ -17,7 +17,7 @@ router.route('/').put((req, res) => {
 
 
     const newPackage = new Package({
-        id,
+        packageId,
         name,
         type,
         price,
@@ -46,7 +46,7 @@ router.route('/:id').delete((req, res) => {
 router.route('/update/:id').post((req, res) => {
     Package.findById(req.params.id)
         .then(package => {
-            package.id = req.body.id;
+            package.packageId = req.body.packageId;
             package.name = req.body.name;
             package.type = req.body.type;
             package.price = Number(req.body.price);

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import axios from 'axios';
 
-export default class CreateBooking extends Component {
+export default class CreatePackage extends Component {
     constructor(props) {
         super(props);
 
@@ -15,22 +15,20 @@ export default class CreateBooking extends Component {
 
         this.state = {
             name: '',
-            contact: 0,
-            package: '',
+            contact: '',
             packageId: 0,
             date: new Date(),
-            packages: []
+            packages: [0]
         }
     }
 
     componentDidMount() {
         axios.get('http://localhost:5000/package/')
             .then(response => {
-                console.log(response.data)
                 if (response.data.length > 0) {
                     this.setState({
-                        packages: response.data
-
+                        packages: response.data.map(pack => pack.packageId),
+                        packageId: response.data[0].packageId
                     })
                 }
             })
@@ -52,8 +50,6 @@ export default class CreateBooking extends Component {
         })
     }
 
-
-
     onChangePackageId(e) {
         this.setState({
             packageId: e.target.value
@@ -66,23 +62,22 @@ export default class CreateBooking extends Component {
         })
     }
 
-
-
     onSubmit(e) {
         e.preventDefault();
 
         const booking = {
             name: this.state.name,
             contact: this.state.contact,
-
             packageId: this.state.packageId,
             date: this.state.date
         }
+
         console.log(booking);
 
         axios.post('http://localhost:5000/booking/', booking)
-            .then(res => console.log(res.data))
-        //window.location = '/';
+            .then(res => console.log(res.data));
+
+        window.location = '/';
     }
 
     render() {
@@ -92,43 +87,41 @@ export default class CreateBooking extends Component {
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Name: </label>
-                        <input
+                        <input type="text"
+                            required
                             className="form-control"
                             value={this.state.name}
                             onChange={this.onChangeName}
-
                         />
-                    </div >
+                    </div>
                     <div className="form-group">
                         <label>Contact: </label>
-                        <input
-                            type="text"
+                        <input type="text"
+                            required
                             className="form-control"
                             value={this.state.contact}
                             onChange={this.onChangeContact}
                         />
                     </div>
-
-                    {/* <div className="form-group">
+                    <div className="form-group">
                         <label>PackageId: </label>
-                        <select ref="idInput"
+                        <select ref="packageInput"
                             required
                             className="form-control"
-                            value={this.state.packages}
+                            value={this.state.packageId}
                             onChange={this.onChangePackageId}>
                             {
-                                this.state.packages.map(function (pack) {
+                                this.state.packages.map(function (Package) {
                                     return <option
-                                        key={pack}
-                                        value={pack} > {pack}
+                                        key={Package}
+                                        value={Package}>{Package}
                                     </option>;
                                 })
                             }
                         </select>
-                    </div> */}
-
+                    </div>
                     <div className="form-group">
-                        <label>Date: </label>
+                        <label>Date:</label>
                         <div>
                             <DatePicker
                                 selected={this.state.date}
@@ -141,8 +134,7 @@ export default class CreateBooking extends Component {
                         <input type="submit" value="Confirm Booking" className="btn btn-primary" />
                     </div>
                 </form>
-            </div >
+            </div>
         )
     }
 }
-

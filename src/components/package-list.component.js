@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const Package = props => (
     <tr>
-        <td>{props.package.id}</td>
+        <td>{props.package.packageId}</td>
         <td>{props.package.name}</td>
         <td>{props.package.type}</td>
         <td>{props.package.price}</td>
@@ -57,7 +57,7 @@ export default class PackageList extends Component {
                 <table className="table">
                     <thead className="thead-light">
                         <tr>
-                            <th>Id</th>
+                            <th>PackageId</th>
                             <th>Name</th>
                             <th>Type</th>
                             <th>Price</th>

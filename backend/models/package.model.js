@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const packageSchema = new Schema({
 
-    id: { type: Number, required: true },
+    packageId: { type: Number, required: true },
     name: { type: String, required: true, minlength: 3 },
     type: { type: String, required: true },
     price: { type: Number, required: true },

@@ -6,7 +6,7 @@ export default class CreatePackage extends Component {
     constructor(props) {
         super(props);
 
-        this.onChangeId = this.onChangeId.bind(this);
+        this.onChangePackageId = this.onChangePackageId.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeType = this.onChangeType.bind(this);
         this.onChangePrice = this.onChangePrice.bind(this);
@@ -15,19 +15,18 @@ export default class CreatePackage extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            id: 0,
+            packageId: 0,
             name: '',
             type: '',
             price: 0,
             place: '',
             days: 0,
-            package: []
         }
     }
 
-    onChangeId(e) {
+    onChangePackageId(e) {
         this.setState({
-            id: e.target.value
+            packageId: e.target.value
         })
     }
 
@@ -67,7 +66,7 @@ export default class CreatePackage extends Component {
         e.preventDefault();
 
         const Package = {
-            id: this.state.id,
+            packageId: this.state.packageId,
             name: this.state.name,
             type: this.state.type,
             price: this.state.price,
@@ -86,11 +85,11 @@ export default class CreatePackage extends Component {
                 <h3>Create Package</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Id: </label>
+                        <label>PackageId: </label>
                         <input
                             className="form-control"
-                            value={this.state.id}
-                            onChange={this.onChangeId}
+                            value={this.state.packageId}
+                            onChange={this.onChangePackageId}
                         />
 
                     </div >

@@ -17,11 +17,11 @@ function App() {
       <div className="container">
         <Navbar />
         <br />
-        <Route path="/" exact component={BookingList} />
-        <Route path="/edit" exact component={PackageList} />
-        <Route path="/package" component={CreatePackage} />
+        <Route path="/booking" exact component={BookingList} />
+        <Route path="/package" exact component={PackageList} />
+        <Route path="/create" component={CreatePackage} />
         <Route path="/package/:id" component={EditPackage} />
-        <Route path="/booking" component={CreateBooking} />
+        <Route path="/user" component={CreateBooking} />
         <Route path="/booking/:id" component={EditBooking} />
       </div>
     </Router>

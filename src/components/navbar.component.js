@@ -10,15 +10,15 @@ export default class Navbar extends Component {
                 <div className="collpase navbar-collapse">
                     <ul className="navbar-nav mr-auto">
                         <li className="navbar-item">
-                            <Link to="/" className="nav-link">Booking List</Link>
+                            <Link to="/booking" className="nav-link">Booking List</Link>
                         </li>
                         <li className="navbar-item">
-                            <Link to="/package" className="nav-link">New Package</Link>
+                            <Link to="/create" className="nav-link">New Package</Link>
                         </li>
                         <li className="navbar-item">
-                            <Link to="/booking" className="nav-link">Booking </Link>
+                            <Link to="/user" className="nav-link">New Booking </Link>
                         </li><li className="navbar-item">
-                            <Link to="/edit" className="nav-link">Package List </Link>
+                            <Link to="/package" className="nav-link">Package List </Link>
                         </li>
                     </ul>
                 </div>

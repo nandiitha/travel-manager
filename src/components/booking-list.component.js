@@ -43,10 +43,9 @@ export default class BookingList extends Component {
         })
     }
 
-    bookingList() {
-        console.log("this.state.booking", this.state.bookings)
+    BookingList() {
         return this.state.bookings.map(currentbooking => {
-            return <Booking booking={currentbooking} deletebooking={this.deleteBooking} key={currentbooking._id} />;
+            return <Booking booking={currentbooking} deleteBooking={this.deleteBooking} key={currentbooking._id} />;
         })
     }
 
@@ -65,7 +64,7 @@ export default class BookingList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.bookingList()}
+                        {this.BookingList()}
                     </tbody>
                 </table>
             </div>
