@@ -20,7 +20,7 @@ export default class EditBooking extends Component {
             package: '',
             packageId: 0,
             date: new Date(),
-
+            packages: []
         }
     }
     componentDidMount() {
@@ -129,7 +129,7 @@ export default class EditBooking extends Component {
                     </div>
 
                     <div className="form-group">
-                        <input type="submit" value="Edit Package" className="btn btn-primary" />
+                        <input type="submit" value="Edit Booking" className="btn btn-primary" />
                     </div>
                 </form>
             </div>

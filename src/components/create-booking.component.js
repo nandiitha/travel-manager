@@ -3,7 +3,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-export default class CreatePackage extends Component {
+export default class CreateBooking extends Component {
     constructor(props) {
         super(props);
 
